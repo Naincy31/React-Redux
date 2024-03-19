@@ -1,23 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
+import { bugAdd, bugDrop, bugResolved } from './store/actionCreators';
+import store from './store/store';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h2>Bug</h2>
+      <button onClick={() => store.dispatch(bugAdd('Bug1'))}>Add Bug</button>
+      {store.getState()}
+      <button onClick={() => store.dispatch(bugResolved(1))}>Resolved Bug</button>
+      <button onClick={() => store.dispatch(bugDrop(1))}>Delete Bug</button>
     </div>
   );
 }
